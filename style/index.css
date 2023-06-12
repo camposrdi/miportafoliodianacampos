@@ -312,6 +312,14 @@ span {
     margin-bottom: 3rem;
 }
 
+.message1 {
+    width: 100%;
+    font-size: 2rem;
+    text-align: center;
+    padding: 5px 5px;
+    border-radius: 25px;
+}
+
 .contact form {
     max-width: 70rem;
     margin: 1rem auto;
