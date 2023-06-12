@@ -79,8 +79,9 @@ function handleClientLoad() {
 function initClient() {
   gapi.client
     .init({
-      apiKey: "AIzaSyBtH4v8KZv9TiqfjdIjNm3ns2wHvAj29Qg",
-      clientId: "Tenvio-de-correo-389600",
+      apiKey: "AIzaSyBPYxKhZUeleQB7TEsnTXkrgjTPsjfN8WI",
+      clientId:
+        "T342640568079-cm8588up73331qtenlbj09n0q5ohbbm6.apps.googleusercontent.com",
       discoveryDocs: [
         "https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest",
       ],
