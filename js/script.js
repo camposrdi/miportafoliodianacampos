@@ -64,8 +64,7 @@ window.onscroll = () => {
     loop: true
    })
 
-
-   // Llamar a la función 'authorize' al cargar la página
+// Llamar a la función 'authorize' al cargar la página
 window.onload = function() {
   handleClientLoad();
 };
@@ -100,44 +99,40 @@ function initClient() {
 
 // Enviar el correo electrónico
 function sendEmail() {
-  var form = document.getElementById("emailForm");
-  var namef = form.elements.namef.value;
+  var form = document.getElementById('emailForm');
+  var name = form.elements.namef.value;
   var email = form.elements.email.value;
   var phone = form.elements.phone.value;
   var subject = form.elements.subject.value;
   var message = form.elements.message.value;
 
-  var email = [
+  var fullMessage = "Name: " + name + "\nEmail: " + email + "\nPhone: " + phone + "\n\nMessage: " + message;
+
+  var emailContent = [
     'Content-Type: text/plain; charset="UTF-8"\r\n',
     "MIME-Version: 1.0\r\n",
     "From: " + email + "\r\n",
-    "To: " + namef + "\r\n",
+    "To: devcamposdianasv@gmail.com\r\n",
     "Subject: " + subject + "\r\n\r\n",
-    message,
+    fullMessage,
   ].join("");
 
-  var base64EncodedEmail = btoa(email).replace(/\+/g, "-").replace(/\//g, "_");
+  var base64EncodedEmail = btoa(emailContent).replace(/\+/g, '-').replace(/\//g, '_');
 
-  gapi.client.gmail.users.messages
-    .send({
-      userId: "me",
-      resource: {
-        raw: base64EncodedEmail,
-      },
-    })
-    .then(
-      function (response) {
-        console.log("Correo electrónico enviado.");
-        form.reset();
-      },
-      function (error) {
-        console.log(error);
-      }
-    );
+  gapi.client.gmail.users.messages.send({
+    userId: 'me',
+    resource: {
+      raw: base64EncodedEmail
+    }
+  }).then(function(response) {
+    console.log('Correo electrónico enviado.');
+    form.reset();
+  }, function(error) {
+    console.log(error);
+  });
 
   return false;
 }
-
 
 // Agregar el evento submit al formulario
 var form = document.getElementById('emailForm');
